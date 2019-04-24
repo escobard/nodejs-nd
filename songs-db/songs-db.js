@@ -34,17 +34,54 @@ class SongsDb{
         })
         
         // defines the model from the file
-        const Song = this_sequelize.define('song', SongsModel);
+        const Song = this._sequelize.define('song', SongsModel);
         
         // sets the new 'song' model to a .this method
-        this._song = Song
+        this._song = Song;
 
         // not qite sure what .sync is, but basically returns the new sequelize instance
         // with established configurations
+
+        // .sync() is necessary when defining the MODELS with sequelize
         return this._sequelize.sync();
     }
 
-    static async(dbFile = 'songs.db'){
+    // this is a base query syntax
+    async listSongsByArtist(artist){
+
+        // using findAll query
+        return this_.song.findAll({
+
+            // where the property name is artist, and the value is the argument
+            where: {
+
+                // using es6 sugared syntax
+                artist
+            }
+        })
+    }
+
+    async listSongsByArtistAndAlbum(artist, album){
+        return this._song.findAll({
+            where: {
+                artist, 
+                album
+            }
+        })
+    }
+
+    // this is the base syntax to create a new COLUMN in the specified table
+    async createSong({argist, album, songs}){
+        return this._song.create({
+            artist,
+            album,
+            song
+        })
+    }
+
+    // allows you to create an INSTANCE of a class, with this new static function
+    // for example - let db = new SongsDB.at('dbFile');
+    static async at (dbFile = 'songs.db'){
         const db = new SongsDb(dbFile)
         await db._init()
         return db
