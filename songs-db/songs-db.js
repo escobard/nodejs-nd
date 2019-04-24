@@ -1,8 +1,8 @@
 'use-strict'
 
 const path = require('path'), 
-sequelize = require('sequelize'),
-SongModel = require('./models/song')
+Sequelize = require('sequelize'),
+SongsModel = require('./models/song')
 
 class SongsDb{
     constructor(dbFile){
@@ -30,7 +30,7 @@ class SongsDb{
             dialect: 'sqlite',
 
             // sets the file / URL for the instance
-            storage: this_storage
+            storage: this._storage
         })
         
         // defines the model from the file

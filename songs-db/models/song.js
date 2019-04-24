@@ -13,7 +13,7 @@ const SongsModel = {
         // determines that this is the primary key of the table
         primaryKey: true,
         // sets the default value of this column
-        defaultValue: UUIDV4
+        defaultValue: UUID
     },
     artist: {
         type: STRING(50),
