@@ -2,7 +2,8 @@
 
 const path = require('path'), 
 Sequelize = require('sequelize'),
-SongsModel = require('./models/song')
+SongsModel = require('./models/song'),
+GenreModel = require('./models/genre')
 
 class SongsDb{
     constructor(dbFile){
@@ -18,6 +19,7 @@ class SongsDb{
 
         // contains the song model
         this._song = null;
+        this._genre = null;
     }
 
     // async not supported with constructor file yet 
@@ -35,9 +37,19 @@ class SongsDb{
         
         // defines the model from the file
         const Song = this._sequelize.define('song', SongsModel);
+        const Genre = this._sequelize.define('genre', GenreModel);
+        
+        // determines relationship between genre and song
+        
+        // says Genre has many songs
+        Genre.hasMany(Song);
+
+        // says song belongs to genre
+        Song.belongsTo(Genre);
         
         // sets the new 'song' model to a .this method
         this._song = Song;
+        this._genre = Genre;
 
         // not qite sure what .sync is, but basically returns the new sequelize instance
         // with established configurations

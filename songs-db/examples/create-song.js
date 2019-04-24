@@ -1,6 +1,6 @@
 'use strict'
 
- const SongsDb = require('../')
+ const SongsDb = require('../songs-db')
 
  ;(async () => {
   try {
