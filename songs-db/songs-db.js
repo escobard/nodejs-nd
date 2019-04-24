@@ -58,6 +58,38 @@ class SongsDb{
         return this._sequelize.sync();
     }
 
+    async listSongsByGenre (genreName){
+        return this._song.findAll({
+
+            // the include syntax, is an SQL join
+            include : [{
+
+                // finds by the model
+                model: this._genre,
+
+                // where the genre has genre name
+                where: {
+                    name: genreName
+                }
+            }]
+        })
+    }
+
+    // finds a single genre
+    async findGenreByName (name){
+        return this._genre.findOne({
+            where: {
+                name
+            }
+        })
+    }
+
+    async createGenre({name}){
+        return this._genre.create({
+            name
+        })
+    }
+
     // this is a base query syntax
     async listSongsByArtist(artist){
 

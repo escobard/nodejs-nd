@@ -7,8 +7,8 @@
     const db = await SongsDb.at()
     const song = {
       artist: 'Dio',
-      album: 'Dio',
-      song: 'Rainbow in the dark'
+      album: 'SADSAD',
+      song: 'Rainbow'
     }
     const results = await db.createSong(song)
     console.log(JSON.stringify(results, null, 2))
