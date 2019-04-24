@@ -71,7 +71,7 @@ class SongsDb{
     }
 
     // this is the base syntax to create a new COLUMN in the specified table
-    async createSong({argist, album, songs}){
+    async createSong({artist, album, song}){
         return this._song.create({
             artist,
             album,
