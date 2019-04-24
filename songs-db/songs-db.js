@@ -50,7 +50,7 @@ class SongsDb{
     async listSongsByArtist(artist){
 
         // using findAll query
-        return this_.song.findAll({
+        return this._song.findAll({
 
             // where the property name is artist, and the value is the argument
             where: {
