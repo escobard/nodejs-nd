@@ -85,6 +85,7 @@ class SongsDb{
     }
 
     async createGenre({name}){
+        console.log('NAME', name)
         return this._genre.create({
             name
         })

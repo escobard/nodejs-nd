@@ -26,6 +26,7 @@ catch(err){
       }]
       
       for (let genre of genres){
+        console.log('GENRE', genre)
         await db.createGenre(genre)
       }
 
