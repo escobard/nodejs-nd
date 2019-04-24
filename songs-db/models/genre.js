@@ -11,6 +11,8 @@ const GenreModel = {
     },
     name: {
         type: STRING(50),
-        allowNull: false
+        allowNull: false,
     }
 }
+
+module.export = GenreModel;

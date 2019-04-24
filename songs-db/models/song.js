@@ -1,6 +1,6 @@
 'use strict'
 
-const { STRING, UUID } = require('sequelize');
+const { STRING, UUID, UUIDV4 } = require('sequelize');
 
 const SongsModel = {
     
@@ -13,7 +13,7 @@ const SongsModel = {
         // determines that this is the primary key of the table
         primaryKey: true,
         // sets the default value of this column
-        defaultValue: UUID
+        defaultValue: UUIDV4
     },
     artist: {
         type: STRING(50),
@@ -26,6 +26,10 @@ const SongsModel = {
     song: {        
         type: STRING(50),
         allowNull: false,
+    },
+    genreName: {
+        type: STRING(50),
+        allowNull: false
     }
 }
 

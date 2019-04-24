@@ -26,7 +26,7 @@ catch(err){
       }]
       
       for (let genre of genres){
-        await db.createSong(genre)
+        await db.createGenre(genre)
       }
 
       const songs = [{
