@@ -55,13 +55,17 @@ db.serialize(() =>{
           songs.forEach((song, idx) =>{
               console.log('Creating:', JSON.stringify(song))
               
-              // performs a join 
+              // performs the operation, arguments passed into the ? in order
               smt.run(idx, song.artist, song.album, song.song)
           })
+          // finalizes the serelize operation
           smt.finalize()
 })
+
+// closes DB connection
 db.close()
 
+// checks for errors
 function done(err){
   if(err) throw err
 }
