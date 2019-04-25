@@ -19,7 +19,32 @@ class SongsDb extends EventEmitter{
     }
 
     // returns a list of the records
-    async _list(){}
+    async _list(){
+
+        return new Promise ((resolve, reject) =>{
+
+            let results = [];
+
+            // pushes record to results
+            const onRow = (err, row) =>{
+                if (err) return reject(err)
+
+                results.push(row)
+            }
+
+            // handles complete list cases
+            const onComplete = (err, times) => {
+                if (err) return reject(err)
+
+                resolve(results)
+            }
+
+            // .each executes the arguments for each record within the sqlite db
+            this.db.each(query, params, onRow, onComplete)
+
+        })
+
+    }
 
     // used to insert into the records
     async _insert(){
