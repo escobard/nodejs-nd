@@ -19,7 +19,7 @@ class SongsDb extends EventEmitter{
     }
 
     // returns a list of the records
-    async _list(){
+    async _list(query, params){
 
         return new Promise ((resolve, reject) =>{
 
@@ -47,7 +47,7 @@ class SongsDb extends EventEmitter{
     }
 
     // used to insert into the records
-    async _insert(){
+    async _insert(query, params){
         return new Promise((resolve, reject) =>{
             
             // onComplete callback needs to be anormal function
@@ -66,6 +66,25 @@ class SongsDb extends EventEmitter{
             // third argument is callback
             this.db.run(query, params, onComplete)
         })
+    }
+
+    async listSongsByArtist (artist){
+
+        // uses raw SQL
+        // the ? is replaced with the second argument, which is considered a parameter within sqlite
+        return this._list('SELECT * FROM songs WHERE artist = ?', [ artist ])
+    }
+
+    async listSongByArtistAndAlbum(artist, album){
+
+        // fills the params in order
+        return this._list('SELECT * FROM songs WHERE artist = ? AND album = ?', [ artist, album ])
+    }
+
+    async createSong({ artist, album, song }){
+
+        // the ? paraemeter is handled by the sqlite3 library, and is not part of sqlite, its a part of the library we are using
+        return this._insert('INSERT INTO songs (artist, album, song) VALUES (?, ?, ?)', [ artist, album, song ])
     }
 }
 
