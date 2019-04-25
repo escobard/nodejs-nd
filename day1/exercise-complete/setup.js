@@ -1,6 +1,6 @@
 'use strict'
 
-const SongsDb = require('./')
+const SongsDb = require('.')
 const fs = require('fs')
 const path = require('path')
 const dbFile = path.join(__dirname, 'songs.db')
