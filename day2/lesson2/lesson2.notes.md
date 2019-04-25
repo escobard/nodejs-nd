@@ -18,4 +18,7 @@
 - mechanism for communicating state changes
 - support from core and user-land API's
 - Streams, HTTP, FileSystem
-- 
+
+## npm init
+
+- passing the `-yes` flag will create package.json imediately
