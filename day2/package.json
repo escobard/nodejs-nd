@@ -1,0 +1,21 @@
+{
+  "name": "songs-db",
+  "version": "1.0.0",
+  "description": "SongsDb Implementation",
+  "main": "songs-db.js",
+  "scripts": {
+    "setup": "node setup",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "keywords": [],
+  "author": "Julián Duque <julian@nodesource.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "sequelize": "^5.7.4",
+    "sqlite3": "^4.0.6"
+  }
+}
