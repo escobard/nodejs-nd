@@ -4,6 +4,7 @@
   "description": "SongsDB Implementation with SQLite",
   "main": "songs-db.js",
   "scripts": {
+    "setup": "node setup",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": ""
