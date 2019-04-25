@@ -17,6 +17,31 @@ class SongsDb extends EventEmitter{
             this.emit('error', err)
         })
     }
+
+    // returns a list of the records
+    async _list(){}
+
+    // used to insert into the records
+    async _insert(){
+        return new Promise((resolve, reject) =>{
+            
+            // onComplete callback needs to be anormal function
+            function onComplete(err){
+                // if err exists, reject original promise
+                if (err) return reject(err)
+                
+                // .this here refers to the onComplete function, lastID is the last ID of the inserted sqlite value
+                const lastID = this.lastID
+                resolve({ id: lastID })
+            }
+
+            // runs a query within the DB with .run
+            // first argument query type
+            // second argument parameters for the query
+            // third argument is callback
+            this.db.run(query, params, onComplete)
+        })
+    }
 }
 
 module.exports = SongsDb;
