@@ -80,6 +80,12 @@ class SongsDb extends EventEmitter {
     // the ? paraemeter is handled by the sqlite3 library, and is not part of sqlite, its a part of the library we are using
     return this._insert('INSERT INTO songs (artist, album, song) VALUES (?, ?, ?)', [ artist, album, song ])
   }
+
+  async listSongsByGenre(genre){
+      // s is an alias for the table songs
+      return this._list(`SELECT s.artist, s.album, s.song, g.name FROM songs s
+      INNER JOIN genres g on g.id = s.genre_id WHERE g.name = ?`)
+  }
 }
 
 module.exports = SongsDb
