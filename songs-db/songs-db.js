@@ -77,9 +77,10 @@ class SongsDb{
 
     // finds a single genre
     async findGenreByName (name){
+        console.log('NAME GENRE', name)
         return this._genre.findOne({
             where: {
-                name
+                name: name
             }
         })
     }

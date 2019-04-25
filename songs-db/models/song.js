@@ -26,10 +26,6 @@ const SongsModel = {
     song: {        
         type: STRING(50),
         allowNull: false,
-    },
-    genreName: {
-        type: STRING(50),
-        allowNull: false
     }
 }
 

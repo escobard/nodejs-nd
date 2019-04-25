@@ -1,5 +1,5 @@
 const SongsDB = require('../songs-db'),
-artist = process.argv[2] || 'Dio'
+artist = process.argv[2] || 'Komiku'
 
  ;(async () => {
   try {
