@@ -38,7 +38,7 @@ db.serialize(() => {
         genre_id INTEGER,
         FOREIGN KEY(genre_id) REFERENCES genres(id)
         )`,
-  done())
+  done)
   const genres = [{
     id: 1,
     name: 'Electronic'
@@ -80,9 +80,9 @@ db.serialize(() => {
   }]
 
   const genresSmt = db.prepare('INSERT INTO genres VALUES (?,?)')
-  genres.forEach((genre, idx) => {
+  genres.forEach((genre) => {
     console.log('Creating Genre:', JSON.stringify(genre))
-    genresSmt.run(idx, genre.name)
+    genresSmt.run(genre.id, genre.name)
   })
   genresSmt.finalize()
 

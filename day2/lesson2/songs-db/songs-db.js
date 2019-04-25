@@ -84,7 +84,8 @@ class SongsDb extends EventEmitter {
   async listSongsByGenre(genre){
       // s is an alias for the table songs
       return this._list(`SELECT s.artist, s.album, s.song, g.name FROM songs s
-      INNER JOIN genres g on g.id = s.genre_id WHERE g.name = ?`)
+      INNER JOIN genres g on g.id = s.genre_id WHERE g.name = ?`,
+      [genre])
   }
 }
 
